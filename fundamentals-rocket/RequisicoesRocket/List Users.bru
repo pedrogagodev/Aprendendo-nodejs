@@ -5,7 +5,13 @@ meta {
 }
 
 get {
-  url: http://localhost:3333/users
+  url: http://localhost:3333/users?search=Pedro&page=2
   body: none
   auth: none
+}
+
+params:query {
+  search: Pedro
+  page: 2
+  ~Pedro: 2
 }
