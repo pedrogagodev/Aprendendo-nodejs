@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-const contacts = [
+let contacts = [
 	{
 		id: randomUUID(),
 		name: "Pedro",
@@ -27,6 +27,13 @@ class ContactsRepository {
 	findById(id) {
 		return new Promise((resolve) => {
 			resolve(contacts.find((contact) => contact.id === id));
+		});
+	}
+
+	delete(id) {
+		return new Promise((resolve) => {
+			contacts = contacts.filter((contact) => contact.id !== id);
+			resolve();
 		});
 	}
 }
