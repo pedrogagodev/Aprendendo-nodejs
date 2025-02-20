@@ -1,4 +1,3 @@
-import { response } from "express";
 import ContactsRepository from "../../repositories/ContactsRepository.js";
 
 class ContactController {

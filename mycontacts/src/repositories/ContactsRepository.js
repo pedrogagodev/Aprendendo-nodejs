@@ -1,5 +1,3 @@
-import { randomUUID } from "node:crypto";
-
 import db from "../app/database/index.js";
 
 class ContactsRepository {
