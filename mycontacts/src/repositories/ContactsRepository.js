@@ -1,5 +1,7 @@
 import { randomUUID } from "node:crypto";
 
+import db from "../app/database/index.js";
+
 let contacts = [
 	{
 		id: randomUUID(),
@@ -42,18 +44,16 @@ class ContactsRepository {
 			resolve();
 		});
 	}
-	create({ name, email, phone, category_id }) {
-		return new Promise((resolve) => {
-			const newContact = {
-				id: randomUUID(),
-				name,
-				email,
-				phone,
-				category_id,
-			};
-			contacts.push(newContact);
-			resolve(newContact);
-		});
+	async create({ name, email, phone, category_id }) {
+		const [row] = await db.query(
+			`
+			INSERT INTO contacts(name, email, phone, category_id)
+			VALUES($1, $2, $3, $4)
+			RETURNING * 
+			`,
+			[name, email, phone, category_id],
+		);
+		return row;
 	}
 	update(id, { name, email, phone, category_id }) {
 		return new Promise((resolve) => {

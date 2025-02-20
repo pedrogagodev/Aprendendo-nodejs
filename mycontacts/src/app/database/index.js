@@ -12,7 +12,11 @@ const client = new Client({
 
 client.connect();
 
-exports.query = async (query) => {
-    const {rows} = await client.query(query)
-    return rows
-}
+const db = {
+	query: async (query, values) => {
+		const { rows } = await client.query(query, values);
+		return rows;
+	},
+};
+
+export default db;
