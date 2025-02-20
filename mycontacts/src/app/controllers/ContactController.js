@@ -4,7 +4,8 @@ import ContactsRepository from "../../repositories/ContactsRepository.js";
 class ContactController {
 	// List all records
 	async index(request, response) {
-		const contacts = await ContactsRepository.findAll();
+		const { orderBy } = request.query;
+		const contacts = await ContactsRepository.findAll(orderBy);
 
 		response.json(contacts);
 	}
@@ -82,7 +83,7 @@ class ContactController {
 			category_id,
 		});
 
-		response.json(contact)
+		response.json(contact);
 	}
 
 	async delete(request, response) {
