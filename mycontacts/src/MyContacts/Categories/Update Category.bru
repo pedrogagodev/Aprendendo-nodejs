@@ -1,0 +1,17 @@
+meta {
+  name: Update Category
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:3000/categories/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Instagram"
+  }
+}
