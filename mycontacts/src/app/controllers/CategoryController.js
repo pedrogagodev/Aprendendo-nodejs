@@ -36,6 +36,14 @@ class CategoryController {
 
 		response.json(category);
 	}
+
+	async delete(request, response) {
+			// Delete a record
+			const { id } = request.params;
+	
+			await CategoriesRepository.delete(id);
+			response.sendStatus(204);
+		}
 }
 
 export default new CategoryController();

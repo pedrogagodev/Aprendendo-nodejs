@@ -26,6 +26,11 @@ class CategoriesRepository {
 
 		return row;
 	}
+	async delete(id) {
+		const deleteOP = await db.query("DELETE FROM categories WHERE id = $1", [id]);
+		return deleteOP;
+	}
+	
 }
 
 export default new CategoriesRepository();
