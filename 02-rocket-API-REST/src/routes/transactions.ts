@@ -5,8 +5,6 @@ import { randomUUID } from "node:crypto";
 
 export async function transactionsRoutes(app: FastifyInstance) {
   app.post("/", async (request, reply) => {
-    // { title, amount, type: credit or debit }
-
     const createTransactionSchema = z.object({
       title: z.string(),
       amount: z.number(),
